@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+.font-icon {
+  font-family: 'icomoon', serif;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: icomoon;
+  src: url('../styles/fonts/icomoon.ttf');
+}
+
+/* 模块组件图标 */
+.font-icon-1:before {
+  content: "\E907";
+}
+.font-icon-2:before {
+  content: "\E909";
+}
+.font-icon-3:before {
+  content: "\E903";
+}
+.font-icon-4:before {
+  content: "\E904";
+}
+.font-icon-5:before {
+  content: "\E901";
+}
+.font-icon-6:before {
+  content: "\E902";
+}
+.font-icon-7:before {
+  content: "\E905";
+}
+.font-icon-8:before {
+  content: "\E90D";
+}
+/* 基本组件图标 */
+.font-icon-11:before {
+  content: "\E900";
+}
+.font-icon-12:before {
+  content: "\E90E";
+}
+.font-icon-13:before {
+  content: "\E90B";
+}
+.font-icon-14:before {
+  content: "\E906";
+}
+.font-icon-15:before {
+  content: "\E90A";
+}
+.font-icon-16:before {
+  content: "\E90C";
+}
+.font-icon-17:before {
+  content: "\E90F";
+}
+
+input {
+  display: inline-block;
+  height: 32px;
+  line-height: 1.5;
+  padding: 4px 7px;
+  font-size: 12px;
+  border: 1px solid #dddee1;
+  border-radius: 4px;
+  color: #495060;
+  background-color: #fff;
+  position: relative;
+  cursor: text;
+  transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out
+}
+
+input:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(45,140,240,.2)
+}
