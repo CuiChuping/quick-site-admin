@@ -27,6 +27,8 @@ import TitlePreview from '../components/title/TitlePreview'
 import TitleSetting from '../components/title/TitleSetting'
 import TextPreview from '../components/text/TextPreview'
 import TextSetting from '../components/text/TextSetting'
+import WhitePreview from '../components/white/WhitePreview'
+import WhiteSetting from '../components/white/WhiteSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -80,7 +82,19 @@ export default {
           {name: '轮播图', icon: 'font-icon font-icon-14', type: 12, preview: 1, setting: 2, data: {}},
           {name: '视频', icon: 'font-icon font-icon-15', type: 13, preview: 1, setting: 2, data: {}},
           {name: '图文', icon: 'font-icon font-icon-16', type: 14, preview: 1, setting: 2, data: {}},
-          {name: '占位符', icon: 'font-icon font-icon-17', type: 15, preview: 1, setting: 2, data: {}}
+          {
+            name: '占位符',
+            icon: 'font-icon font-icon-17',
+            type: 15,
+            preview: WhitePreview,
+            setting: {
+              title: '占位符设置',
+              component: WhiteSetting
+            },
+            data: {
+              height: 10
+            }
+          }
         ]
       },
       // 用户正在编辑的网站数据
