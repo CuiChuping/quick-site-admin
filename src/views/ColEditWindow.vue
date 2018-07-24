@@ -1,21 +1,21 @@
 <template>
   <div :style="{height: screenHeight + 'px'}">
     <component-tabs :style="style.componentTabs" :moduleComponents="moduleComponents" :basicComponents="basicComponents" @add-component="addComponent"></component-tabs>
-    <phone-box :style="style.phoneBox" :componentDataList="componentDataList" @select-component="selectComponent"></phone-box>
-    <settings :style="style.setting" :componentData="componentData"></settings>
+    <phone-box :style="style.phoneBox" :componentDataList="componentDataList" :currentComponentData="currentComponentData" @select-component="selectComponent"></phone-box>
+    <setting-box :style="style.setting" :componentData="currentComponentData"></setting-box>
   </div>
 </template>
 
 <script>
 import ComponentTabs from '../components/ComponentTabs'
 import PhoneBox from '../components/PhoneBox'
-import Settings from '../components/Settings'
+import SettingBox from '../components/SettingBox'
 import TitlePreview from '../components/title/TitlePreview'
 import TitleSetting from '../components/title/TitleSetting'
 
 export default {
   name: 'ColEditWindow',
-  components: { ComponentTabs, PhoneBox, Settings },
+  components: { ComponentTabs, PhoneBox, SettingBox },
   data: function () {
     return {
       // 屏幕尺寸
@@ -34,7 +34,19 @@ export default {
       ],
       // 基本组件数据
       basicComponents: [
-        {name: '标题', icon: 'font-icon font-icon-11', type: 9, preview: TitlePreview, setting: TitleSetting, data: { title: '标题栏111' }},
+        {
+          name: '标题',
+          icon: 'font-icon font-icon-11',
+          type: 9,
+          preview: TitlePreview,
+          setting: {
+            title: '标题栏设置',
+            component: TitleSetting
+          },
+          data: {
+            title: '标题栏'
+          }
+        },
         {name: '文本', icon: 'font-icon font-icon-12', type: 10, preview: 1, setting: 2, data: {}},
         {name: '图片', icon: 'font-icon font-icon-13', type: 11, preview: 1, setting: 2, data: {}},
         {name: '轮播图', icon: 'font-icon font-icon-14', type: 12, preview: 1, setting: 2, data: {}},
@@ -45,7 +57,7 @@ export default {
       // 用户正在编辑的网站数据
       componentDataList: [],
       // 设置项
-      componentData: null
+      currentComponentData: null
     }
   },
   computed: {
@@ -75,10 +87,10 @@ export default {
     addComponent: function (component) {
       let componentData = { type: component.type, preview: component.preview, setting: component.setting, data: {...component.data} }
       this.componentDataList.push(componentData)
-      this.componentData = componentData
+      this.currentComponentData = componentData
     },
     selectComponent: function (componentData) {
-      this.componentData = componentData
+      this.currentComponentData = componentData
     }
   },
   mounted: function () {

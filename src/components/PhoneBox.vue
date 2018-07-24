@@ -10,7 +10,8 @@
           <img src="../assets/default.png"/>
           <p>从左侧组件库中选择组件，编辑您的企业官网</p>
         </div>
-        <div v-for="(componentData, index) in componentDataList" :class="['component', {mask: currentComponent !== componentData}]"
+        <div v-for="(componentData, index) in componentDataList"
+                   :class="['component', {mask: currentComponentData !== componentData}]"
                    :is="componentData.preview"
                    :key="index"
                    :data="componentData.data"
@@ -23,16 +24,12 @@
 export default {
   name: 'PhoneBox',
   props: {
-    componentDataList: Array
-  },
-  data: function () {
-    return {
-      currentComponent: null
-    }
+    componentDataList: Array,
+    currentComponentData: Object
   },
   methods: {
     handleClick: function (componentData) {
-      this.$emit('select-component', this.currentComponent = componentData)
+      this.$emit('select-component', componentData)
     }
   }
 }

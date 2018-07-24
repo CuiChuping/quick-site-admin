@@ -1,18 +1,18 @@
 <template>
   <div class="setting-box">
-    <div class="setting-header">组件属性设置</div>
+    <div class="setting-header">{{ componentData === null ? '组件属性设置' : componentData.setting.title }}</div>
     <div class="setting-content">
       <div class="empty" v-if="componentData === null">
         <img src="../assets/default.png"/>
         <p>还没有可以编辑的内容组件</p>
       </div>
-      <div v-else :is="componentData.setting" :data="componentData.data"></div>
+      <div v-else :is="componentData.setting.component" :data="componentData.data"></div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'Settings',
+  name: 'SettingBox',
   props: {
     componentData: Object
   }
