@@ -1,5 +1,5 @@
 <template>
-  <div class="title" :style="{ height: data.height + 'px' }"></div>
+  <div class="white" :style="{ height: data.height + 'px' }"></div>
 </template>
 <script>
 export default {
@@ -10,7 +10,7 @@ export default {
 }
 </script>
 <style scoped>
-.title {
+.white {
   background-color: #eff2f7;
 }
 </style>
