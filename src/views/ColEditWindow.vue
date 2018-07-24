@@ -12,6 +12,8 @@ import PhoneBox from '../components/PhoneBox'
 import SettingBox from '../components/SettingBox'
 import TitlePreview from '../components/title/TitlePreview'
 import TitleSetting from '../components/title/TitleSetting'
+import TextPreview from '../components/text/TextPreview'
+import TextSetting from '../components/text/TextSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -47,7 +49,19 @@ export default {
             title: '标题栏'
           }
         },
-        {name: '文本', icon: 'font-icon font-icon-12', type: 10, preview: 1, setting: 2, data: {}},
+        {
+          name: '文本',
+          icon: 'font-icon font-icon-12',
+          type: 10,
+          preview: TextPreview,
+          setting: {
+            title: '文本设置',
+            component: TextSetting
+          },
+          data: {
+            text: '请输入内容'
+          }
+        },
         {name: '图片', icon: 'font-icon font-icon-13', type: 11, preview: 1, setting: 2, data: {}},
         {name: '轮播图', icon: 'font-icon font-icon-14', type: 12, preview: 1, setting: 2, data: {}},
         {name: '视频', icon: 'font-icon font-icon-15', type: 13, preview: 1, setting: 2, data: {}},
@@ -85,7 +99,12 @@ export default {
   },
   methods: {
     addComponent: function (component) {
-      let componentData = { type: component.type, preview: component.preview, setting: component.setting, data: {...component.data} }
+      let componentData = {
+        type: component.type,
+        preview: component.preview,
+        setting: component.setting,
+        data: { ...component.data }
+      }
       this.componentDataList.push(componentData)
       this.currentComponentData = componentData
     },

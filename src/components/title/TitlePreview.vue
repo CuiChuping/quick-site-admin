@@ -11,9 +11,9 @@ export default {
 </script>
 <style scoped>
 .title {
+  font-size: 14px;
   padding: 15px 0 5px 15px;
   background-color: #eff2f7;
-  font-size: 14px;
   font-weight: normal;
   color: #666;
 }

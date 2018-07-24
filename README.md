@@ -1,6 +1,6 @@
 # quick-site
 
-> A Vue.js project
+> 极速构建属于自己的小程序官网
 
 ## Build Setup
 

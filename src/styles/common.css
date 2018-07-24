@@ -60,7 +60,7 @@
   content: "\E90F";
 }
 
-input {
+input, textarea {
   display: inline-block;
   height: 32px;
   line-height: 1.5;
@@ -75,7 +75,7 @@ input {
   transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out
 }
 
-input:focus {
+input:focus, textarea:focus {
   outline: 0;
   box-shadow: 0 0 0 2px rgba(45,140,240,.2)
 }
