@@ -1,6 +1,6 @@
 <template>
   <div class="setting-box">
-    <div class="setting-header">{{ editing === null ? '组件属性设置' : componentData.setting.title }}</div>
+    <div class="setting-header">{{ editing === null ? '组件属性设置' : editing.setting.title }}</div>
     <div class="setting-content">
       <div class="empty" v-if="editing === null">
         <img src="../assets/default.png"/>
