@@ -1,8 +1,21 @@
 <template>
   <div :style="{height: screenHeight + 'px'}">
-    <component-tabs :style="style.componentTabs" :moduleComponents="moduleComponents" :basicComponents="basicComponents" @add-component="addComponent"></component-tabs>
-    <phone-box :style="style.phoneBox" :componentDataList="componentDataList" :currentComponentData="currentComponentData" @select-component="selectComponent"></phone-box>
-    <setting-box :style="style.setting" :componentData="currentComponentData"></setting-box>
+
+    <component-tabs
+      :style="style.componentTabs"
+      :components="components"
+      @click="handleTabClick"></component-tabs>
+
+    <phone-box
+      :style="style.phoneBox"
+      :designs="designs"
+      :editing="editing"
+      @click="handleDesignClick"></phone-box>
+
+    <setting-box
+      :style="style.settingBox"
+      :editing="editing"></setting-box>
+
   </div>
 </template>
 
@@ -23,55 +36,57 @@ export default {
       // 屏幕尺寸
       screenHeight: 0,
       screenWidth: 0,
-      // 模块组件数据
-      moduleComponents: [
-        {name: '企业简介', icon: 'font-icon font-icon-1', type: 1, preview: 1, setting: 2, data: {}},
-        {name: '企业咨询', icon: 'font-icon font-icon-2', type: 2, preview: 1, setting: 2, data: {}},
-        {name: '管理团队', icon: 'font-icon font-icon-3', type: 3, preview: 1, setting: 2, data: {}},
-        {name: '合作伙伴', icon: 'font-icon font-icon-4', type: 4, preview: 1, setting: 2, data: {}},
-        {name: '电话', icon: 'font-icon font-icon-5', type: 5, preview: 1, setting: 2, data: {}},
-        {name: '地址', icon: 'font-icon font-icon-6', type: 6, preview: 1, setting: 2, data: {}},
-        {name: '联系我们', icon: 'font-icon font-icon-7', type: 7, preview: 1, setting: 2, data: {}},
-        {name: '企业招聘', icon: 'font-icon font-icon-8', type: 8, preview: 1, setting: 2, data: {}}
-      ],
-      // 基本组件数据
-      basicComponents: [
-        {
-          name: '标题',
-          icon: 'font-icon font-icon-11',
-          type: 9,
-          preview: TitlePreview,
-          setting: {
-            title: '标题栏设置',
-            component: TitleSetting
+      components: {
+        // 模块组件数据
+        modules: [
+          {name: '企业简介', icon: 'font-icon font-icon-1', type: 1, preview: 1, setting: 2, data: {}},
+          {name: '企业咨询', icon: 'font-icon font-icon-2', type: 2, preview: 1, setting: 2, data: {}},
+          {name: '管理团队', icon: 'font-icon font-icon-3', type: 3, preview: 1, setting: 2, data: {}},
+          {name: '合作伙伴', icon: 'font-icon font-icon-4', type: 4, preview: 1, setting: 2, data: {}},
+          {name: '电话', icon: 'font-icon font-icon-5', type: 5, preview: 1, setting: 2, data: {}},
+          {name: '地址', icon: 'font-icon font-icon-6', type: 6, preview: 1, setting: 2, data: {}},
+          {name: '联系我们', icon: 'font-icon font-icon-7', type: 7, preview: 1, setting: 2, data: {}},
+          {name: '企业招聘', icon: 'font-icon font-icon-8', type: 8, preview: 1, setting: 2, data: {}}
+        ],
+        // 基本组件数据
+        basics: [
+          {
+            name: '标题',
+            icon: 'font-icon font-icon-11',
+            type: 9,
+            preview: TitlePreview,
+            setting: {
+              title: '标题栏设置',
+              component: TitleSetting
+            },
+            data: {
+              title: '标题栏'
+            }
           },
-          data: {
-            title: '标题栏'
-          }
-        },
-        {
-          name: '文本',
-          icon: 'font-icon font-icon-12',
-          type: 10,
-          preview: TextPreview,
-          setting: {
-            title: '文本设置',
-            component: TextSetting
+          {
+            name: '文本',
+            icon: 'font-icon font-icon-12',
+            type: 10,
+            preview: TextPreview,
+            setting: {
+              title: '文本设置',
+              component: TextSetting
+            },
+            data: {
+              text: '请输入内容'
+            }
           },
-          data: {
-            text: '请输入内容'
-          }
-        },
-        {name: '图片', icon: 'font-icon font-icon-13', type: 11, preview: 1, setting: 2, data: {}},
-        {name: '轮播图', icon: 'font-icon font-icon-14', type: 12, preview: 1, setting: 2, data: {}},
-        {name: '视频', icon: 'font-icon font-icon-15', type: 13, preview: 1, setting: 2, data: {}},
-        {name: '图文', icon: 'font-icon font-icon-16', type: 14, preview: 1, setting: 2, data: {}},
-        {name: '占位符', icon: 'font-icon font-icon-17', type: 15, preview: 1, setting: 2, data: {}}
-      ],
+          {name: '图片', icon: 'font-icon font-icon-13', type: 11, preview: 1, setting: 2, data: {}},
+          {name: '轮播图', icon: 'font-icon font-icon-14', type: 12, preview: 1, setting: 2, data: {}},
+          {name: '视频', icon: 'font-icon font-icon-15', type: 13, preview: 1, setting: 2, data: {}},
+          {name: '图文', icon: 'font-icon font-icon-16', type: 14, preview: 1, setting: 2, data: {}},
+          {name: '占位符', icon: 'font-icon font-icon-17', type: 15, preview: 1, setting: 2, data: {}}
+        ]
+      },
       // 用户正在编辑的网站数据
-      componentDataList: [],
+      designs: [],
       // 设置项
-      currentComponentData: null
+      editing: null
     }
   },
   computed: {
@@ -88,7 +103,7 @@ export default {
           width: this.screenWidth - 720 + 'px',
           height: '100%'
         },
-        setting: {
+        settingBox: {
           float: 'right',
           width: '500px',
           height: '100%',
@@ -98,18 +113,21 @@ export default {
     }
   },
   methods: {
-    addComponent: function (component) {
-      let componentData = {
+    handleTabClick: function (component) {
+      let designData = {
         type: component.type,
         preview: component.preview,
         setting: component.setting,
-        data: { ...component.data }
+        data: {
+          type: component.type,
+          ...component.data
+        }
       }
-      this.componentDataList.push(componentData)
-      this.currentComponentData = componentData
+      this.designs.push(designData)
+      this.editing = designData
     },
-    selectComponent: function (componentData) {
-      this.currentComponentData = componentData
+    handleDesignClick: function (designData) {
+      this.editing = designData
     }
   },
   mounted: function () {

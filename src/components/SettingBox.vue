@@ -1,12 +1,12 @@
 <template>
   <div class="setting-box">
-    <div class="setting-header">{{ componentData === null ? '组件属性设置' : componentData.setting.title }}</div>
+    <div class="setting-header">{{ editing === null ? '组件属性设置' : componentData.setting.title }}</div>
     <div class="setting-content">
-      <div class="empty" v-if="componentData === null">
+      <div class="empty" v-if="editing === null">
         <img src="../assets/default.png"/>
         <p>还没有可以编辑的内容组件</p>
       </div>
-      <div v-else :is="componentData.setting.component" :data="componentData.data"></div>
+      <div v-else :is="editing.setting.component" :data="editing.data"></div>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 export default {
   name: 'SettingBox',
   props: {
-    componentData: Object
+    editing: Object
   }
 }
 </script>

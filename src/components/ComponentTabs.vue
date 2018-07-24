@@ -1,17 +1,17 @@
 <template>
   <div class="tabs-box">
     <div class="tabs-nav">
-      <div :class="['tabs-nav-tab', {'tabs-nav-tab-active': currentTab === moduleComponents}]"
-           @click="currentTab = moduleComponents">模块组件</div>
-      <div :class="['tabs-nav-tab', {'tabs-nav-tab-active': currentTab === basicComponents}]"
-           @click="currentTab = basicComponents">基本组件</div>
+      <div :class="['tabs-nav-tab', {'tabs-nav-tab-active': currentTab === components.modules}]"
+           @click="currentTab = components.modules">模块组件</div>
+      <div :class="['tabs-nav-tab', {'tabs-nav-tab-active': currentTab === components.basics}]"
+           @click="currentTab = components.basics">基本组件</div>
     </div>
     <div class="tabs-content" >
       <component-card v-for="component in currentTab"
                       :key="component.name"
                       :icon="component.icon"
                       :name="component.name"
-                      @add-component="$emit('add-component', component)"></component-card>
+                      @click="$emit('click', component)"></component-card>
     </div>
   </div>
 </template>
@@ -23,12 +23,11 @@ export default {
   name: 'ComponentTabs',
   components: { ComponentCard },
   props: {
-    moduleComponents: Array,
-    basicComponents: Array
+    components: Object
   },
   data: function () {
     return {
-      currentTab: this.moduleComponents
+      currentTab: this.components.modules
     }
   }
 }

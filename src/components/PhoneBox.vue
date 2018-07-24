@@ -6,16 +6,16 @@
         <img src="../assets/menu.png"/>
       </div>
       <div class="phone-content">
-        <div class="empty" v-if="componentDataList.length === 0">
+        <div class="empty" v-if="designs.length === 0">
           <img src="../assets/default.png"/>
           <p>从左侧组件库中选择组件，编辑您的企业官网</p>
         </div>
-        <div v-for="(componentData, index) in componentDataList"
-                   :class="['component', {mask: currentComponentData !== componentData}]"
-                   :is="componentData.preview"
+        <div v-for="(component, index) in designs"
+                   :class="['component', { mask: editing !== component }]"
+                   :is="component.preview"
                    :key="index"
-                   :data="componentData.data"
-                   @click.native="handleClick(componentData)"></div>
+                   :data="component.data"
+                   @click.native="handleClick(component)"></div>
       </div>
     </div>
   </div>
@@ -24,12 +24,12 @@
 export default {
   name: 'PhoneBox',
   props: {
-    componentDataList: Array,
-    currentComponentData: Object
+    designs: Array,
+    editing: Object
   },
   methods: {
     handleClick: function (componentData) {
-      this.$emit('select-component', componentData)
+      this.$emit('click', componentData)
     }
   }
 }

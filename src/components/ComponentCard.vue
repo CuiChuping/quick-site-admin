@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="$emit('add-component')">
+  <div class="card" @click="$emit('click')">
     <i :class="icon"></i>
     <h5 class="name">{{name}}</h5>
   </div>
