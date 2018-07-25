@@ -29,6 +29,10 @@ import TextPreview from '../components/text/TextPreview'
 import TextSetting from '../components/text/TextSetting'
 import WhitePreview from '../components/white/WhitePreview'
 import WhiteSetting from '../components/white/WhiteSetting'
+import CompanyInfoPreview from '../components/companyInfo/CompanyInfoPreview'
+import CompanyInfoSetting from '../components/companyInfo/CompanyInfoSetting'
+import PhonePreview from '../components/phone/PhonePreview'
+import PhoneSetting from '../components/phone/PhoneSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -41,11 +45,37 @@ export default {
       components: {
         // 模块组件数据
         modules: [
-          {name: '企业简介', icon: 'font-icon font-icon-1', type: 1, preview: 1, setting: 2, data: {}},
+          {
+            name: '企业简介',
+            icon: 'font-icon font-icon-1',
+            type: 1,
+            preview: CompanyInfoPreview,
+            setting: {
+              title: '企业简介',
+              component: CompanyInfoSetting
+            },
+            data: {
+              title: '企业简介',
+              content: '请填写公司简介...'
+            }
+          },
           {name: '企业咨询', icon: 'font-icon font-icon-2', type: 2, preview: 1, setting: 2, data: {}},
           {name: '管理团队', icon: 'font-icon font-icon-3', type: 3, preview: 1, setting: 2, data: {}},
           {name: '合作伙伴', icon: 'font-icon font-icon-4', type: 4, preview: 1, setting: 2, data: {}},
-          {name: '电话', icon: 'font-icon font-icon-5', type: 5, preview: 1, setting: 2, data: {}},
+          {
+            name: '电话',
+            icon: 'font-icon font-icon-5',
+            type: 5,
+            preview: PhonePreview,
+            setting: {
+              title: '电话设置',
+              component: PhoneSetting
+            },
+            data: {
+              title: '公司电话',
+              phone: '0795-XXXXXXXXX'
+            }
+          },
           {name: '地址', icon: 'font-icon font-icon-6', type: 6, preview: 1, setting: 2, data: {}},
           {name: '联系我们', icon: 'font-icon font-icon-7', type: 7, preview: 1, setting: 2, data: {}},
           {name: '企业招聘', icon: 'font-icon font-icon-8', type: 8, preview: 1, setting: 2, data: {}}
