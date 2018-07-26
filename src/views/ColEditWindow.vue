@@ -33,6 +33,8 @@ import CompanyInfoPreview from '../components/companyInfo/CompanyInfoPreview'
 import CompanyInfoSetting from '../components/companyInfo/CompanyInfoSetting'
 import PhonePreview from '../components/phone/PhonePreview'
 import PhoneSetting from '../components/phone/PhoneSetting'
+import ImagePreview from '../components/image/ImagePreview'
+import ImageSetting from '../components/image/ImageSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -108,7 +110,20 @@ export default {
               text: '请输入内容'
             }
           },
-          {name: '图片', icon: 'font-icon font-icon-13', type: 11, preview: 1, setting: 2, data: {}},
+          {
+            name: '图片',
+            icon: 'font-icon font-icon-13',
+            type: 11,
+            preview: ImagePreview,
+            setting: {
+              title: '图片设置',
+              component: ImageSetting
+            },
+            data: {
+              imageType: 1,
+              images: []
+            }
+          },
           {name: '轮播图', icon: 'font-icon font-icon-14', type: 12, preview: 1, setting: 2, data: {}},
           {name: '视频', icon: 'font-icon font-icon-15', type: 13, preview: 1, setting: 2, data: {}},
           {name: '图文', icon: 'font-icon font-icon-16', type: 14, preview: 1, setting: 2, data: {}},
