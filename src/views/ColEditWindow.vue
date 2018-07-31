@@ -31,6 +31,8 @@ import WhitePreview from '../components/white/WhitePreview'
 import WhiteSetting from '../components/white/WhiteSetting'
 import CompanyInfoPreview from '../components/companyInfo/CompanyInfoPreview'
 import CompanyInfoSetting from '../components/companyInfo/CompanyInfoSetting'
+import CompanyConsultPreview from '../components/companyConsult/CompanyConsultPreview'
+import CompanyConsultSetting from '../components/companyConsult/CompanyConsultSetting'
 import PhonePreview from '../components/phone/PhonePreview'
 import PhoneSetting from '../components/phone/PhoneSetting'
 import ImagePreview from '../components/image/ImagePreview'
@@ -61,7 +63,20 @@ export default {
               content: '请填写公司简介...'
             }
           },
-          {name: '企业咨询', icon: 'font-icon font-icon-2', type: 2, preview: 1, setting: 2, data: {}},
+          {
+            name: '企业咨询',
+            icon: 'font-icon font-icon-2',
+            type: 2,
+            preview: CompanyConsultPreview,
+            setting: {
+              title: '企业咨询',
+              component: CompanyConsultSetting
+            },
+            data: {
+              title: '企业咨询',
+              content: '请填写公司简介...'
+            }
+          },
           {name: '管理团队', icon: 'font-icon font-icon-3', type: 3, preview: 1, setting: 2, data: {}},
           {name: '合作伙伴', icon: 'font-icon font-icon-4', type: 4, preview: 1, setting: 2, data: {}},
           {
