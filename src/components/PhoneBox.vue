@@ -10,13 +10,28 @@
           <img src="../assets/default.png"/>
           <p>从左侧组件库中选择组件，编辑您的企业官网</p>
         </div>
-        <div v-for="(component, index) in designs"
-                   :class="['component', { mask: editing !== component }]"
-                   :is="component.preview"
+        <div v-for="(designData, index) in designs"
+                   :class="['component', { mask: editing !== designData }]"
+                   :is="designData.preview"
                    :key="index"
-                   :data="component.data"
-                   @click.native="handleClick(component)"></div>
+                   :data="designData.data"
+                   @click.native="handleClick(designData)"
+                   @mouseenter.native.self="handleMouseOver($event, designData, index)"
+                   @mouseleave.native.self="handleMouseOut"></div>
       </div>
+      <ul class="ctrl-box" :style="{top: ctrlBox.top + 'px'}" v-if="ctrlBox.show"
+          @mouseover="handleCtrlBoxMouseOver"
+          @mouseout="handleCtrlBoxMouseOut">
+        <li v-if="ctrlBox.showUpBtn" @click="handleUpClick">
+          <i class="fa fa-arrow-up"></i>
+        </li>
+        <li v-if="ctrlBox.showDownBtn" @click="handleDownClick">
+          <i class="fa fa-arrow-down"></i>
+        </li>
+        <li  @click="handleTimesClick">
+          <i class="fa fa-times"></i>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -27,9 +42,56 @@ export default {
     designs: Array,
     editing: Object
   },
+  data: function () {
+    return {
+      ctrlBox: {
+        top: 0,
+        show: false,
+        showUpBtn: true,
+        showDownBtn: true,
+        targetDesign: null
+      }
+    }
+  },
   methods: {
-    handleClick: function (componentData) {
-      this.$emit('click', componentData)
+    handleClick: function (designData) {
+      this.$emit('click', designData)
+    },
+    handleMouseOver: function (event, designData, index) {
+      this.ctrlBox.top = event.target.offsetTop
+      this.ctrlBox.show = true
+      this.ctrlBox.showUpBtn = index !== 0
+      this.ctrlBox.showDownBtn = index !== this.designs.length - 1
+      this.ctrlBox.targetDesign = designData
+    },
+    handleMouseOut: function () {
+      this.ctrlBox.show = false
+    },
+    handleCtrlBoxMouseOver: function () {
+      this.ctrlBox.show = true
+    },
+    handleCtrlBoxMouseOut: function () {
+      this.ctrlBox.show = false
+    },
+    handleUpClick: function () {
+      let index = this.designs.indexOf(this.ctrlBox.targetDesign)
+      let thisDesign = this.designs[index]
+      let prevDesign = this.designs[index - 1]
+      this.$set(this.designs, index, prevDesign)
+      this.$set(this.designs, index - 1, thisDesign)
+      this.ctrlBox.show = false
+    },
+    handleDownClick: function () {
+      let index = this.designs.indexOf(this.ctrlBox.targetDesign)
+      let thisDesign = this.designs[index]
+      let nextDesign = this.designs[index + 1]
+      this.$set(this.designs, index, nextDesign)
+      this.$set(this.designs, index + 1, thisDesign)
+      this.ctrlBox.show = false
+    },
+    handleTimesClick: function () {
+      this.designs.splice(this.designs.indexOf(this.ctrlBox.targetDesign), 1)
+      this.ctrlBox.show = false
     }
   }
 }
@@ -46,6 +108,7 @@ export default {
   background-color: #fafafa;
   border: 1px solid #c1cddb;
   border-radius: 2px;
+  position: relative;
 }
 .phone-menu {
   position: relative;
@@ -79,6 +142,7 @@ export default {
 }
 .component {
   position: relative;
+  cursor: pointer;
 }
 .mask:after {
   display: block;
@@ -89,5 +153,27 @@ export default {
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,.5);
+  cursor: default;
+}
+.ctrl-box {
+  position: absolute;
+  top: 0;
+  right: -37px;
+  width: 37px;
+  background-color: #33343d;
+  color: #fff;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.ctrl-box li {
+  width: 37px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+}
+.ctrl-box li:hover {
+  background-color: #25262e;
 }
 </style>
