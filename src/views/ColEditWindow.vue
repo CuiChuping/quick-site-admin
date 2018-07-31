@@ -74,7 +74,11 @@ export default {
             },
             data: {
               title: '企业咨询',
-              content: '请填写公司简介...'
+              consultList: [
+                { title: '咨询标题1', headImg: '', time: '2018-01-01', online: true },
+                { title: '咨询标题2', headImg: '', time: '2018-01-01', online: true },
+                { title: '咨询标题3', headImg: '', time: '2018-01-01', online: false }
+              ]
             }
           },
           {name: '管理团队', icon: 'font-icon font-icon-3', type: 3, preview: 1, setting: 2, data: {}},

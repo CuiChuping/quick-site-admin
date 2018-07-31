@@ -92,11 +92,11 @@ export default {
     },
     handleTimesClick: function () {
       MessageBox.confirm('确定要删除此模块吗？', '提示', { type: 'warning' })
-      .then(() => {
-        this.designs.splice(this.designs.indexOf(this.ctrlBox.targetDesign), 1)
-        this.ctrlBox.show = false
-        this.handleClick(null)
-      })
+        .then(() => {
+          this.designs.splice(this.designs.indexOf(this.ctrlBox.targetDesign), 1)
+          this.ctrlBox.show = false
+          this.handleClick(null)
+        })
     }
   }
 }
