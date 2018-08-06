@@ -1,7 +1,14 @@
 <template>
   <div>
     <div class="title">{{ data.title }}</div>
-    <div class="text">{{ data.content }}</div>
+    <div class="content">
+      <div class="item">
+        <img src="../../assets/image-upload.jpg"/>
+        <div>姓名</div>
+        <div>职位</div>
+        <div>简介</div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -20,7 +27,7 @@ export default {
   font-weight: normal;
   color: #666;
 }
-.text {
+.content {
   font-size: 14px;
   padding: 12px 15px;
   white-space: pre-line;
@@ -28,5 +35,12 @@ export default {
   word-wrap: break-word;
   overflow: hidden;
   background-color: white;
+}
+.item {
+  width: 50%;
+  background-color: red;
+}
+.item img {
+  width: 100%;
 }
 </style>

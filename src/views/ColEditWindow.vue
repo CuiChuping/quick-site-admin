@@ -94,7 +94,14 @@ export default {
             },
             data: {
               title: '管理团队',
-              manageList: []
+              manageList: [
+                {
+                  avatar: '头像',
+                  name: '姓名',
+                  job: '职位',
+                  description: '简介'
+                }
+              ]
             }
           },
           {name: '合作伙伴', icon: 'font-icon font-icon-4', type: 4, preview: 1, setting: 2, data: {}},
