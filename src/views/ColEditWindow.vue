@@ -75,9 +75,9 @@ export default {
             data: {
               title: '企业咨询',
               consultList: [
-                { title: '咨询标题1', headImg: '', time: '2018-01-01', online: true },
-                { title: '咨询标题2', headImg: '', time: '2018-01-01', online: true },
-                { title: '咨询标题3', headImg: '', time: '2018-01-01', online: false }
+                { title: '咨询标题1', headImg: '', time: '2018-01-01', content: '咨询内容1', online: true },
+                { title: '咨询标题2', headImg: '', time: '2018-01-01', content: '咨询内容2', online: true },
+                { title: '咨询标题3', headImg: '', time: '2018-01-01', content: '咨询内容3', online: false }
               ]
             }
           },

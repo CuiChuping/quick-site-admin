@@ -28,7 +28,7 @@
             <el-table-column label="操作" width="110">
               <template slot-scope="item">
                 <el-button-group>
-                  <el-button size="mini" icon="el-icon-edit"></el-button>
+                  <el-button size="mini" icon="el-icon-edit" @click="handleEditBtnClick(item)"></el-button>
                   <el-button size="mini" icon="el-icon-delete" @click="handleDelBtnClick(item)"></el-button>
                 </el-button-group>
               </template>
@@ -36,40 +36,97 @@
           </el-table>
         </td>
       </tr>
+      <tr style="height: 80px">
+        <td colspan="2">
+          <el-button type="primary" size="mini" @click="handleAddBtnClick">添加咨询</el-button>
+        </td>
+      </tr>
     </table>
+    <el-dialog
+        title="编辑咨询"
+        :visible.sync="dialogShow"
+        width="900px">
+      <el-form label-width="80px">
+        <el-form-item label="咨询标题">
+          <el-input v-model="editing.title"></el-input>
+        </el-form-item>
+        <el-form-item label="封面图片">
+          <el-upload
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess">
+            <div class="image-upload">
+              <img v-if="editing.headImg" :src="editing.headImg"/>
+              <img v-else src="../../assets/image-upload.jpg" style="background-color: #dddee1"/>
+            </div>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label="详细内容">
+          <editor :content.sync="editing.content"></editor>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="handleSaveBtnClick">确定添加</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
 import DefaultImage from '../../assets/default.png'
-import {
-  Table,
-  TableColumn,
-  Switch,
-  ButtonGroup,
-  Button,
-  Notification
-} from 'element-ui'
+import Editor from '../base/Editor'
+
 export default {
   name: 'CompanyConsultSetting',
-  components: {
-    ElTable: Table,
-    ElTableColumn: TableColumn,
-    ElSwitch: Switch,
-    ElButtonGroup: ButtonGroup,
-    ElButton: Button
-  },
+  components: { Editor },
   props: {
-    data: Object
+    data: {
+      consultList: []
+    }
   },
   data: function () {
     return {
-      defaultImage: DefaultImage
+      defaultImage: DefaultImage,
+      dialogShow: false,
+      editing: {
+        title: '',
+        headImg: '',
+        time: '',
+        content: '',
+        online: false
+      }
     }
   },
   methods: {
     handleDelBtnClick: function (item) {
       this.data.consultList.splice(item.$index, 1)
       Notification.success({message: '删除咨询成功', title: '删除成功'})
+    },
+    handleAddBtnClick: function () {
+      this.editing = {
+        title: '',
+        headImg: '',
+        time: '',
+        content: '',
+        online: false,
+        index: -1
+      }
+      this.dialogShow = true
+    },
+    handleEditBtnClick: function (editing) {
+      this.editing = { ...editing.row, index: editing.$index }
+      this.dialogShow = true
+    },
+    handleAvatarSuccess: function (res, file) {
+      this.editing.headImg = URL.createObjectURL(file.raw)
+    },
+    handleSaveBtnClick: function () {
+      if (this.editing.index === -1) {
+        this.data.consultList.push(this.editing)
+      } else {
+        this.data.consultList.splice(this.editing.index, 1, this.editing)
+      }
+      this.dialogShow = false
+      delete this.editing.index
     }
   }
 }
@@ -95,5 +152,28 @@ table {
   height: 30px;
   background-color: #dddee1;
   padding: 5px 10px;
+}
+.image-upload {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  background-color: #f3f3f3;
+  line-height: 100px;
+}
+.image-upload img {
+  width: 100%;
+  vertical-align: middle;
+}
+.image-upload:hover:after {
+  position: absolute;
+  display: block;
+  content: '';
+  height: 100px;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 0;
+}
+.dialog-footer {
+  text-align: center;
 }
 </style>
