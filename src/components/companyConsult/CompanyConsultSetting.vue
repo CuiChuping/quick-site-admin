@@ -66,7 +66,7 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="handleSaveBtnClick">确定添加</el-button>
+        <el-button type="primary" @click="handleSaveBtnClick">确定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -167,11 +167,12 @@ table {
 .image-upload:hover:after {
   position: absolute;
   display: block;
-  content: '';
+  content: '点击上传';
   height: 100px;
   width: 100px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
   top: 0;
+  color: white;
 }
 .dialog-footer {
   text-align: center;
