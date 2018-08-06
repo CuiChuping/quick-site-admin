@@ -37,6 +37,8 @@ import PhonePreview from '../components/phone/PhonePreview'
 import PhoneSetting from '../components/phone/PhoneSetting'
 import ImagePreview from '../components/image/ImagePreview'
 import ImageSetting from '../components/image/ImageSetting'
+import ManageTeamPreview from '../components/manageTeam/ManageTeamPreview'
+import ManageTeamSetting from '../components/manageTeam/ManageTeamSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -81,7 +83,20 @@ export default {
               ]
             }
           },
-          {name: '管理团队', icon: 'font-icon font-icon-3', type: 3, preview: 1, setting: 2, data: {}},
+          {
+            name: '管理团队',
+            icon: 'font-icon font-icon-3',
+            type: 3,
+            preview: ManageTeamPreview,
+            setting: {
+              title: '管理团队',
+              component: ManageTeamSetting
+            },
+            data: {
+              title: '管理团队',
+              manageList: []
+            }
+          },
           {name: '合作伙伴', icon: 'font-icon font-icon-4', type: 4, preview: 1, setting: 2, data: {}},
           {
             name: '电话',
@@ -198,7 +213,8 @@ export default {
         setting: component.setting,
         data: {
           type: component.type,
-          ...component.data
+          // 深度复制
+          ...JSON.parse(JSON.stringify(component.data))
         }
       }
       this.designs.push(designData)
