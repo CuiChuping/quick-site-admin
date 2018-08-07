@@ -153,27 +153,6 @@ table {
   background-color: #dddee1;
   padding: 5px 10px;
 }
-.image-upload {
-  position: relative;
-  height: 100px;
-  width: 100px;
-  background-color: #f3f3f3;
-  line-height: 100px;
-}
-.image-upload img {
-  width: 100%;
-  vertical-align: middle;
-}
-.image-upload:hover:after {
-  position: absolute;
-  display: block;
-  content: '点击上传';
-  height: 100px;
-  width: 100px;
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  color: white;
-}
 .dialog-footer {
   text-align: center;
 }

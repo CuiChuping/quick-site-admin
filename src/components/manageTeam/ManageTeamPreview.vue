@@ -4,16 +4,26 @@
     <div class="content">
       <div class="item">
         <img src="../../assets/image-upload.jpg"/>
-        <div>姓名</div>
-        <div>职位</div>
-        <div>简介</div>
+        <div class="info">
+          <div class="name">姓名</div>
+          <div class="job">职位</div>
+          <div class="description">简介</div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="../../assets/image-upload.jpg"/>
+        <div class="info">
+          <div class="name">姓名</div>
+          <div class="job">职位</div>
+          <div class="description">简介</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'CompanyInfoPreview',
+  name: 'ManageTeamPreview',
   props: {
     data: Object
   }
@@ -29,7 +39,7 @@ export default {
 }
 .content {
   font-size: 14px;
-  padding: 12px 15px;
+  padding: 6px 7px;
   white-space: pre-line;
   word-break: break-all;
   word-wrap: break-word;
@@ -37,10 +47,33 @@ export default {
   background-color: white;
 }
 .item {
+  float: left;
   width: 50%;
-  background-color: red;
+  padding: 6px 7px;
+  font-size: 0;
 }
 .item img {
   width: 100%;
+}
+.info {
+  padding: 12px;
+  background-color: #f9fafc;
+}
+.name {
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 4px;
+}
+.job {
+  color: #666;
+  font-size: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.description {
+  color: #666;
+  font-size: 12px;
+  padding-top: 10px;
 }
 </style>

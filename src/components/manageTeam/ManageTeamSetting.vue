@@ -1,28 +1,56 @@
 <template>
   <div class="box">
-    <table>
-      <tr>
-        <td>
-          <label for="title">标题：</label>
-        </td>
-        <td>
-          <input id="title" v-model="data.title"/>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label for="content" class="content-label">内容：</label>
-        </td>
-        <td>
-          <textarea id="content" v-model="data.content"></textarea>
-        </td>
-      </tr>
-    </table>
+    <label for="title">标题：</label>
+    <input id="title" v-model="data.title"/>
+    <div class="item" v-for="item in data.manageList">
+      <table>
+        <tr>
+          <td>
+            <label>头像：</label>
+          </td>
+          <td align="left">
+            <el-upload
+              action="https://jsonplaceholder.typicode.com/posts/"
+              :show-file-list="false"
+              :on-success="handleAvatarSuccess">
+              <div class="image-upload">
+                <img v-if="item.avatar" :src="item.avatar"/>
+                <img v-else src="../../assets/image-upload.jpg" style="background-color: #dddee1"/>
+              </div>
+            </el-upload>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="name">姓名：</label>
+          </td>
+          <td>
+            <input id="name" v-model="data.title"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="job">职位：</label>
+          </td>
+          <td>
+            <input id="job" v-model="data.title"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="description">简介：</label>
+          </td>
+          <td>
+            <input id="description" v-model="data.title"/>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'CompanyInfoSetting',
+  name: 'ManageTeamSetting',
   props: {
     data: Object
   }
@@ -32,22 +60,19 @@ export default {
 label {
   font-size: 13px;
 }
-.content-label {
-  vertical-align: top;
-}
 .box {
   padding-top: 20px;
-}
-table {
-  margin: 0 auto;
+  text-align: center;
 }
 #title {
-  width: 320px;
+  width: 380px;
   margin-bottom: 5px;
 }
-#content {
-  width: 320px;
-  height: 250px;
-  resize: none;
+.item {
+  margin: 30px;
+  background-color: red;
+}
+#name, #job, #description {
+  width: 380px;
 }
 </style>

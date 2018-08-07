@@ -96,7 +96,7 @@ export default {
               title: '管理团队',
               manageList: [
                 {
-                  avatar: '头像',
+                  avatar: '',
                   name: '姓名',
                   job: '职位',
                   description: '简介'
