@@ -93,9 +93,4 @@ label {
   width: 350px;
   margin: 10px 0;
 }
-.tip {
-  color: #999;
-  font-size: 12px;
-  margin-top: 5px;
-}
 </style>

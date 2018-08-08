@@ -102,3 +102,8 @@ input:focus, textarea:focus {
   top: 0;
   color: white;
 }
+.tip {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}

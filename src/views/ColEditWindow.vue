@@ -41,6 +41,8 @@ import ManageTeamPreview from '../components/manageTeam/ManageTeamPreview'
 import ManageTeamSetting from '../components/manageTeam/ManageTeamSetting'
 import CompanyPartnerPreview from '../components/companyPartner/CompanyPartnerPreview'
 import CompanyPartnerSetting from '../components/companyPartner/CompanyPartnerSetting'
+import AddressPreview from '../components/address/AddressPreview'
+import AddressSetting from '../components/address/AddressSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -130,7 +132,22 @@ export default {
               phone: '0795-XXXXXXXXX'
             }
           },
-          {name: '地址', icon: 'font-icon font-icon-6', type: 6, preview: 1, setting: 2, data: {}},
+          {
+            name: '地址',
+            icon: 'font-icon font-icon-6',
+            type: 6,
+            preview: AddressPreview,
+            setting: {
+              title: '公司地址',
+              component: AddressSetting
+            },
+            data: {
+              title: '公司地址',
+              addressDetail: '',
+              lat: 0,
+              lng: 0
+            }
+          },
           {name: '联系我们', icon: 'font-icon font-icon-7', type: 7, preview: 1, setting: 2, data: {}},
           {name: '企业招聘', icon: 'font-icon font-icon-8', type: 8, preview: 1, setting: 2, data: {}}
         ],

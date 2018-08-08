@@ -2,7 +2,7 @@
   <div class="box">
     <table width="430">
       <tr>
-        <td width="60">
+        <td width="60" align="right">
           <label for="title">标题：</label>
         </td>
         <td>
@@ -10,7 +10,7 @@
         </td>
       </tr>
       <tr>
-        <td>
+        <td align="right">
           <label class="content-label">合作商：</label>
         </td>
         <td>
@@ -59,7 +59,7 @@ table {
   margin: 0 auto;
 }
 #title {
-  width: 320px;
+  width: 340px;
   margin-bottom: 5px;
 }
 .image-box {
