@@ -43,6 +43,8 @@ import CompanyPartnerPreview from '../components/companyPartner/CompanyPartnerPr
 import CompanyPartnerSetting from '../components/companyPartner/CompanyPartnerSetting'
 import AddressPreview from '../components/address/AddressPreview'
 import AddressSetting from '../components/address/AddressSetting'
+import ContactMePreview from '../components/contactMe/ContactMePreview'
+import ContactMeSetting from '../components/contactMe/ContactMeSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -148,7 +150,19 @@ export default {
               lng: 0
             }
           },
-          {name: '联系我们', icon: 'font-icon font-icon-7', type: 7, preview: 1, setting: 2, data: {}},
+          {
+            name: '联系我们',
+            icon: 'font-icon font-icon-7',
+            type: 7,
+            preview: ContactMePreview,
+            setting: {
+              title: '联系我们',
+              component: ContactMeSetting
+            },
+            data: {
+              title: '联系我们'
+            }
+          },
           {name: '企业招聘', icon: 'font-icon font-icon-8', type: 8, preview: 1, setting: 2, data: {}}
         ],
         // 基本组件数据
