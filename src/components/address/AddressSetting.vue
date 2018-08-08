@@ -25,7 +25,9 @@
     <el-dialog
       title="选择地址"
       :visible.sync="dialogShow"
-      width="800px">
+      width="800px"
+      :close-on-click-modal="false"
+      @close="handlerDialogClose">
       <iframe id="mapPage" width="100%" height="600px" frameborder="0"
               src="https://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
       </iframe>
@@ -51,6 +53,7 @@ export default {
         this.data.lat = loc.latlng.lat
         this.data.lng = loc.latlng.lng
         this.data.addressDetail = loc.poiaddress
+        this.dialogShow = false
       }
     }, false);
   },
@@ -61,6 +64,9 @@ export default {
     handleSelectBtnClick: function () {
       this.dialogShow = true
       currentSelected = this
+    },
+    handlerDialogClose: function () {
+      currentSelected = null
     }
   }
 }
