@@ -10,7 +10,7 @@
           <div class="description">简介</div>
         </div>
       </div>
-      <div v-else v-for="item in data.manageList" class="item">
+      <div v-else v-for="(item, index) in data.manageList" class="item" :key="index">
         <img src="../../assets/image-upload.jpg"/>
         <div class="info">
           <div class="name">{{item.name}}</div>

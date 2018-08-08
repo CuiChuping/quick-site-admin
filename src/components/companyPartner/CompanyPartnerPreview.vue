@@ -2,7 +2,7 @@
   <div>
     <div class="title">{{ data.title }}</div>
     <div class="content">
-      <img v-for="image in data.imageList" src="../../assets/image-default.png" class="image"/>
+      <img v-for="(image, index) in data.imageList" src="../../assets/image-default.png" class="image" :key="index"/>
     </div>
   </div>
 </template>

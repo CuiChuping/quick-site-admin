@@ -16,7 +16,8 @@
         <td>
           <div class="image-box">
             <el-upload
-              v-for="image in data.imageList"
+              v-for="(image, index) in data.imageList"
+              :key="index"
               action="https://jsonplaceholder.typicode.com/posts/"
               :show-file-list="false"
               :on-success="handleAvatarSuccess" class="image">
@@ -40,7 +41,7 @@ export default {
   },
   methods: {
     handleAddBtnClick: function () {
-      this.data.imageList.push('');
+      this.data.imageList.push('')
     }
   }
 }

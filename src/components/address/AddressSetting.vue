@@ -55,7 +55,7 @@ export default {
         this.data.addressDetail = loc.poiaddress
         this.dialogShow = false
       }
-    }, false);
+    }, false)
   },
   destroyed: function () {
     console.log('destroyed')

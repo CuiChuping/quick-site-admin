@@ -2,7 +2,7 @@
   <div class="box">
     <label for="title">标题：</label>
     <input id="title" v-model="data.title"/>
-    <div class="item" v-for="item in data.manageList">
+    <div class="item" v-for="(item, index) in data.manageList" :key="index">
       <table>
         <tr>
           <td>
@@ -65,7 +65,7 @@ export default {
         name: '姓名',
         job: '职位',
         description: '简介'
-      });
+      })
     }
   }
 }
