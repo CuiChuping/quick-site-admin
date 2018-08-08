@@ -95,12 +95,8 @@ export default {
             data: {
               title: '管理团队',
               manageList: [
-                {
-                  avatar: '',
-                  name: '姓名',
-                  job: '职位',
-                  description: '简介'
-                }
+                { avatar: '', name: '张三', job: '高级Java工程师', description: '职位简介...' },
+                { avatar: '', name: '姓名2', job: '职位2', description: '简介2' }
               ]
             }
           },

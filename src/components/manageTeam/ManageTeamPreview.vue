@@ -2,7 +2,7 @@
   <div>
     <div class="title">{{ data.title }}</div>
     <div class="content">
-      <div class="item">
+      <div v-if="data.manageList.length === 0" class="item">
         <img src="../../assets/image-upload.jpg"/>
         <div class="info">
           <div class="name">姓名</div>
@@ -10,12 +10,12 @@
           <div class="description">简介</div>
         </div>
       </div>
-      <div class="item">
+      <div v-else v-for="item in data.manageList" class="item">
         <img src="../../assets/image-upload.jpg"/>
         <div class="info">
-          <div class="name">姓名</div>
-          <div class="job">职位</div>
-          <div class="description">简介</div>
+          <div class="name">{{item.name}}</div>
+          <div class="job">{{item.job}}</div>
+          <div class="description">{{item.description}}</div>
         </div>
       </div>
     </div>
