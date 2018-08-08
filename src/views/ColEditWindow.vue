@@ -39,6 +39,8 @@ import ImagePreview from '../components/image/ImagePreview'
 import ImageSetting from '../components/image/ImageSetting'
 import ManageTeamPreview from '../components/manageTeam/ManageTeamPreview'
 import ManageTeamSetting from '../components/manageTeam/ManageTeamSetting'
+import CompanyPartnerPreview from '../components/companyPartner/CompanyPartnerPreview'
+import CompanyPartnerSetting from '../components/companyPartner/CompanyPartnerSetting'
 
 export default {
   name: 'ColEditWindow',
@@ -100,7 +102,20 @@ export default {
               ]
             }
           },
-          {name: '合作伙伴', icon: 'font-icon font-icon-4', type: 4, preview: 1, setting: 2, data: {}},
+          {
+            name: '合作伙伴',
+            icon: 'font-icon font-icon-4',
+            type: 4,
+            preview: CompanyPartnerPreview,
+            setting: {
+              title: '合作伙伴',
+              component: CompanyPartnerSetting
+            },
+            data: {
+              title: '合作伙伴',
+              imageList: [ '', '', '' ]
+            }
+          },
           {
             name: '电话',
             icon: 'font-icon font-icon-5',
