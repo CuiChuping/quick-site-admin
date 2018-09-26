@@ -42,6 +42,9 @@ export default {
   methods: {
     handleAddBtnClick: function () {
       this.data.imageList.push('')
+    },
+    handleAvatarSuccess: function () {
+      console.log()
     }
   }
 }

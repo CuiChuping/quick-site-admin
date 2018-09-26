@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h1>官网编辑-XX科技有限责任公司</h1>
-    <button>保存并发布</button>
+  <div class="head">
+    <h1 class="title">官网编辑-XX科技有限责任公司</h1>
+    <button class="save_button" @click="$emit('save')">保存并发布</button>
   </div>
 </template>
 
@@ -12,11 +12,11 @@ export default {
 </script>
 
 <style scoped>
-  div {
+  .head {
     background-color: #324057;
     height: 60px;
   }
-  h1 {
+  .title {
     font-size: 22px;
     height: 60px;
     line-height: 60px;
@@ -26,7 +26,7 @@ export default {
     float: left;
     font-weight: normal;
   }
-  button {
+  .save_button {
     display: block;
     float: right;
     font-size: 16px;

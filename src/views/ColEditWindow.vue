@@ -1,25 +1,29 @@
 <template>
-  <div :style="{height: screenHeight + 'px'}">
+  <div>
+    <Header @save="handleSaveClick"/>
+    <div :style="{height: screenHeight + 'px'}">
 
-    <component-tabs
-      :style="style.componentTabs"
-      :components="components"
-      @click="handleTabClick"></component-tabs>
+      <component-tabs
+        :style="style.componentTabs"
+        :components="components"
+        @click="handleTabClick"></component-tabs>
 
-    <phone-box
-      :style="style.phoneBox"
-      :designs="designs"
-      :editing="editing"
-      @click="handleDesignClick"></phone-box>
+      <phone-box
+        :style="style.phoneBox"
+        :designs="designs"
+        :editing="editing"
+        @click="handleDesignClick"></phone-box>
 
-    <setting-box
-      :style="style.settingBox"
-      :editing="editing"></setting-box>
+      <setting-box
+        :style="style.settingBox"
+        :editing="editing"></setting-box>
 
+    </div>
   </div>
 </template>
 
 <script>
+import Header from '../components/Header'
 import ComponentTabs from '../components/ComponentTabs'
 import PhoneBox from '../components/PhoneBox'
 import SettingBox from '../components/SettingBox'
@@ -48,7 +52,7 @@ import ContactMeSetting from '../components/contactMe/ContactMeSetting'
 
 export default {
   name: 'ColEditWindow',
-  components: { ComponentTabs, PhoneBox, SettingBox },
+  components: { Header, ComponentTabs, PhoneBox, SettingBox },
   data: function () {
     return {
       // 屏幕尺寸
@@ -238,7 +242,7 @@ export default {
           float: 'left',
           width: '220px',
           height: '100%',
-          overflow: 'scroll'
+          overflow: 'hidden'
         },
         phoneBox: {
           float: 'left',
@@ -271,6 +275,9 @@ export default {
     },
     handleDesignClick: function (designData) {
       this.editing = designData
+    },
+    handleSaveClick: function () {
+      console.log(JSON.stringify(this.designs.map(({data}) => ({...data}))))
     }
   },
   mounted: function () {
