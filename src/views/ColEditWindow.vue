@@ -253,7 +253,7 @@ export default {
           float: 'right',
           width: '500px',
           height: '100%',
-          overflow: 'scroll'
+          overflow: 'auto'
         }
       }
     }
@@ -281,10 +281,10 @@ export default {
     }
   },
   mounted: function () {
-    const that = this
     const onResize = () => {
-      that.screenHeight = document.body.clientHeight - 60
-      that.screenWidth = document.body.clientWidth
+      this.screenHeight = document.body.clientHeight - 60
+      this.screenWidth = document.body.clientWidth
+      console.log(document.body.clientWidth)
     }
     onResize()
     window.addEventListener('resize', onResize, false)
