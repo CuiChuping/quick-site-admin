@@ -1,6 +1,6 @@
-# quick-site
+# Introduction
 
-> 极速构建属于自己的小程序官网
+> 极速构建属于自己的小程序
 
 # Demo
 
