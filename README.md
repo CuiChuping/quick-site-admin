@@ -2,6 +2,10 @@
 
 > 极速构建属于自己的小程序官网
 
+# Demo
+
+[click it](http://quick-site.debug2016.com/#/ColEditWindow)
+
 ## Build Setup
 
 ``` bash
