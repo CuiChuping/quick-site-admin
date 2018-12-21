@@ -69,7 +69,7 @@ npm run dev
 # 项目截图
 
 
-<img src="https://github.com/CuiChuping/quick-site-admin/blob/master/screen/ColEditWindow.png?raw=true" width="800"/>
+<img src="https://github.com/CuiChuping/quick-site-admin/blob/master/screen/ColEditWindow.png?raw=true"/>
 
 
 # 项目布局
