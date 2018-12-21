@@ -150,4 +150,4 @@ npm run dev
 
 # License
 
-[GPL](https://github.com/bailicangdu/vue2-elm/blob/master/COPYING)
+[GPL](https://github.com/CuiChuping/quick-site-admin/blob/master/COPYING)
