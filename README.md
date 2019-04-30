@@ -2,6 +2,13 @@
 
 本项目的目标是实现微信小程序主页全可视化设计器，最大程度降低创建小程序主页的成本。
 
+
+# 项目截图
+
+
+<img src="https://github.com/CuiChuping/quick-site-admin/blob/master/screen/ColEditWindow.png?raw=true"/>
+
+
 ## 技术栈
 
 vue2 + vue-router + webpack + svg
@@ -62,13 +69,6 @@ npm run dev
 # 最终目标
 
 降低创建微信小程序的门槛，完全可视化设计。用户只需花费很少的时间就可以构建一个丰富多彩有内涵的微信小程序。
-
-
-
-# 项目截图
-
-
-<img src="https://github.com/CuiChuping/quick-site-admin/blob/master/screen/ColEditWindow.png?raw=true"/>
 
 
 # 项目布局
